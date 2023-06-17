@@ -10,7 +10,8 @@ public class CuentaCorriente {
 		this.saldo = saldo;
 		this.nombreTitular = NombreTitular;
 		Random rnd = new Random();
-		numeroCuenta = Math.abs(rnd.nextLong());
+		long positiveRandomLong = rnd.nextLong() & Long.MAX_VALUE;
+		numeroCuenta = positiveRandomLong;
 	}
 
 	public void setIngreso(double ingreso) {
@@ -38,7 +39,7 @@ public class CuentaCorriente {
 
 	public String getDatosCuenta() {
 
-		return "Titular: " + nombreTitular + "\n" + "Nº de Cuenta: " + numeroCuenta + "\n" + "Saldo: " + saldo;
+		return "Titular: " + nombreTitular + "\n" + "Nï¿½ de Cuenta: " + numeroCuenta + "\n" + "Saldo: " + saldo;
 	}
 
 	public static void Transferencia(CuentaCorriente titu1, CuentaCorriente titu2, double cantidad) {
@@ -51,7 +52,7 @@ public class CuentaCorriente {
 			titu1.saldo -= cantidad;
 			titu2.saldo += cantidad;
 			System.out.println("Transferencia realizada por " + titu1.nombreTitular + " a la cuenta de "
-					+ titu2.nombreTitular + " por el importe de " + cantidad + "€");
+					+ titu2.nombreTitular + " por el importe de " + cantidad + "ï¿½");
 
 		}
 	}
